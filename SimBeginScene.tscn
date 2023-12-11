@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://dme50udw1stox"]
+
+[ext_resource type="Script" path="res://SimBeginScene.cs" id="1_i8lby"]
+[ext_resource type="PackedScene" uid="uid://dgxwvehspcn4u" path="res://Models381/SpringModel.tscn" id="2_narhr"]
+
+[sub_resource type="Environment" id="Environment_lojjx"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2skms"]
+size = Vector2(9, 9)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8bupy"]
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="SphereMesh" id="SphereMesh_molta"]
+radius = 0.125
+height = 0.25
+
+[node name="SimBeginScene" type="Node3D"]
+transform = Transform3D(1, 6.98132e-05, 0, -6.98132e-05, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_i8lby")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.86402, 0.503457, 0, -0.503457, 0.86402, 0, 4.10434, 3.32316)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lojjx")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("PlaneMesh_2skms")
+
+[node name="Anchor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.82589, 0)
+mesh = SubResource("BoxMesh_8bupy")
+
+[node name="Ball" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19663, 0)
+mesh = SubResource("SphereMesh_molta")
+
+[node name="SpringModel" parent="." instance=ExtResource("2_narhr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.88987, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80322, 3.73171)
+fov = 85.2688
+
+[node name="KELabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="PELabel" type="Label" parent="."]
+anchors_preset = -1
+anchor_right = 0.002
+anchor_bottom = 0.02
+offset_left = -2.0
+offset_top = 19.0
+offset_right = 93.696
+offset_bottom = 29.04
+
+[node name="TELabel" type="Label" parent="."]
+offset_top = 37.0
+offset_right = 57.0
+offset_bottom = 60.0
