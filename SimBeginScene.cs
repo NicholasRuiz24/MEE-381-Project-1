@@ -40,9 +40,9 @@ pend = new PendSim();
 length0 = length = 0.9f;
 spring.GenMesh(0.05f, 0.015f, length, 6.0f, 62);
 
-endB.X = (float)pend.X_Position;
-endB.Y = (float)pend.Y_Position;
-endB.Z = (float)pend.Z_Position;
+endB.X = (float)(xA + pend.X_Position);
+endB.Y = (float)(yA + pend.Y_Position);
+endB.Z = (float)(zA + pend.Z_Position);
 PlacePendulum(endB);
 
 time = 0.0;
@@ -57,9 +57,9 @@ keLabel.Text = "Kinetic Energy: " + pend.KE.ToString("0.00") + " J";
 peLabel.Text = "Potential Energy: " + pend.PE.ToString("0.00") + " J";
 teLabel.Text = "Total Energy: " + pend.TE.ToString("0.00") + " J";
 
-endB.X = (float)pend.X_Position;
-endB.Y = (float)pend.Y_Position;
-endB.Z = (float)pend.Z_Position;
+endB.X = (float)(pend.X_Position);
+endB.Y = (float)(pend.Y_Position);
+endB.Z = (float)(pend.Z_Position);
 
 PlacePendulum(endB);
 time += delta;

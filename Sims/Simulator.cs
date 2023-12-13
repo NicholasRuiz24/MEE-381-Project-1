@@ -81,13 +81,13 @@ public class Simulator
         rhsFunc(x,time,f[0]);
         for(i=0;i<n;++i)
         {
-            xi[i] = x[i] + f[0][i] * dTime;
+            xi[i] = x[i] + (f[0][i]*.5) * dTime;
         }
 
         rhsFunc(xi,time+ (dTime*.5),f[1]);
         for(i=0;i<n;++i)
         {
-            xi[i] = x[i] + 0.5*(f[0][i] + f[1][i])*dTime;
+            xi[i] = x[i] + 0.5*(f[1][i])*dTime;
         }  
 
         rhsFunc(xi,time+ (dTime*.5),f[2]);
@@ -96,7 +96,7 @@ public class Simulator
             xi[i] = x[i] + f[2][i] * dTime;
         }
         
-        rhsFunc(xi,time+ (dTime*.5),f[3]);
+        rhsFunc(xi,time+ (dTime),f[3]);
         for (i=0;i<n;++i)
         {
             x[i] += (1.0/6.0)*(f[0][i] + 2*f[1][i] + 2*f[2][i] + f[3][i])*dTime;

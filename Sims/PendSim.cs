@@ -48,11 +48,6 @@ public class PendSim : Simulator
         ff[3] = (((-k*(L-L0)/L)*xx[2])/m)-g;
         ff[4] = xx[5];
         ff[5] = ((-k*(L-L0)/L)*xx[4])/m;
-
-        //Energy Calculations
-        KineticEnergy = .5*m*(x[1]*x[1]+x[3]*x[3]+x[5]*x[5]);
-        PotentialEnergy = -(m*g*x[2]+ .5*k*(L-L0));
-        TotalEnergy = KineticEnergy + PotentialEnergy;
     }
 
     //--------------------------------------------------------------------
@@ -93,19 +88,19 @@ public class PendSim : Simulator
     public double KE
     {
         get{
-            return(KineticEnergy);
+            return(.5*m*(x[1]*x[1]+x[3]*x[3]+x[5]*x[5]));
         }
     }
     public double PE
     {
         get{
-            return(PotentialEnergy);
+            return(-(m*g*x[2]+ .5*k*((L-L0)*(L-L0))));
         }
     }
     public double TE
     {
         get{
-            return(TotalEnergy);
+            return((m*g*x[2]+ .5*k*((L-L0)*(L-L0))) + .5*m*(x[1]*x[1]+x[3]*x[3]+x[5]*x[5]));
         }
     }
 }
